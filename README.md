@@ -1,63 +1,55 @@
-# dsh-prompt-hitchhiker
+# @ipfans/dsh-prompt-hitchhiker
 
-A DeepSeek Harness bundle that injects a named prompt template into the system
-prompt of every new session — including subagent sessions — resolved by
-workspace and by model.
+**中文** | [English](README.en.md)
 
-## Bundled: Ponytail
+把具名提示词模板注入 DeepSeek Harness 的系统提示词，每个新会话与子智能体都会生效，并按工作区与模型分别解析该用哪一套。
 
-The library ships with [Ponytail](https://github.com/DietrichGebert/ponytail)
-(MIT), a coding mode that writes the smallest change that fully solves the task.
-It arrives **ready to select, not active**: no session changes behavior until you
-pick it.
+## 内置 Ponytail
 
-- The prompt body is one template in the library, marked **Bundled**. Select it
-  as the global default, pin it to a workspace, or match it by model.
-- Its five companion skills — `ponytail-review`, `ponytail-audit`,
-  `ponytail-debt`, `ponytail-gain`, `ponytail-help` — register in the skill
-  catalog and load on demand. A switch in **Options** removes them.
-- Deleting the template is permanent; **Restore Ponytail** puts it back.
+插件自带 [Ponytail](https://github.com/DietrichGebert/ponytail)（MIT），一种编码模式：用最小的改动完整解决问题。
 
-Provenance, refreshing from upstream, and the license: [docs/PONYTAIL.md](docs/PONYTAIL.md).
+它**备好但不自动启用**——你不选中它，任何会话的行为都不会改变。
 
-## What it does
+- 提示词正文是模板库里的一套模板，标有「内置」。可以设为全局默认、指定到某个工作区，或按模型匹配。
+- 配套的五个 skill —— `ponytail-review`、`ponytail-audit`、`ponytail-debt`、`ponytail-gain`、`ponytail-help` —— 注册进 skill 目录，按需加载。在**选项**里可以整体关掉。
+- 删除内置模板是永久的，「恢复 Ponytail」可以找回。
 
-- **Template library.** Any number of named templates, each with one inline
-  body, created, edited, deleted, and previewed in Settings.
-- **Global default.** One template applies everywhere unless a narrower rule
-  says otherwise.
-- **Per workspace.** Each registered workspace is either *follow global*, *do
-  not inject*, or pinned to a named template. A rule matches the session's
-  directory exactly, or the longest enclosing workspace path.
-- **Per model.** Rules match the model id (or the provider id) by *starts with*,
-  *ends with*, or *contains*; the first matching rule in declared order wins.
-- **Subagents.** Every subagent is its own Session and Agent, so the same
-  system-prompt section covers them. A switch can skip subagent sessions.
-- **Not-yet-applied sessions.** A session that started before a template
-  applied gets a hint above the composer that inserts the body into the current
-  message, or can be dismissed.
+来源、从上游更新、许可见 [docs/PONYTAIL.zh.md](docs/PONYTAIL.zh.md)。
 
-Precedence is workspace rule → first matching model rule → global default.
+## 功能
 
-## Where the text lands
+- **模板库。** 任意数量的具名模板，每套一个正文；在设置里增删改和预览。
+- **全局默认。** 一个模板在所有会话生效，除非有更窄的规则覆盖它。
+- **按工作区。** 每个已注册工作区可选「跟随全局」「不注入」或指定某套模板。规则匹配会话目录本身，或最长的上层工作区路径。
+- **按模型。** 规则按「开头是」「结尾是」「包含」匹配模型 id 或 provider id；按声明顺序取第一条命中。
+- **子智能体。** 每个子智能体都是独立的 Session 与 Agent，因此同一个系统提示词分区天然覆盖它们。有一个开关可以跳过子智能体会话。
+- **未生效的会话。** 模板生效前就已开始的会话，会在输入框上方看到提示，可一键把正文插入当前消息，或忽略。
 
-The section registers at order 50: after the deployment persona (order 0) and
-before the first tool guidance (order 1000). It is not re-appended each turn:
-prompt sections resolve on every assembled step, but the Session records a
-system message only when the rendered text actually changes, and this section's
-text is a deterministic function of the stored document.
+优先级：工作区规则 → 第一条命中的模型规则 → 全局默认。
 
-## Where things live
+## 注入位置
 
-- Settings → **Prompt templates** edits the library and every rule.
-- The hint appears above the composer card (`conversation.input.dock`).
-- The document lives at `$DSH_HOME/storages/prompt-hitchhiker/config.json`
-  (shown on the settings page) and is written atomically. It is re-read when the
-  file changes, so an edit takes effect on the next step without a restart.
-- The plugin makes no model requests of its own; the only network traffic is
-  the page talking to its own Host route.
+分区注册在 order 50：位于部署人设（0）之后、工具指引（1000）之前。它不会在每一轮重复追加——提示词分区在每次组装时都会解析，但只有当渲染出的文本真正变化时，Session 才会记录一条系统消息，而这个分区的文本是存储文档的确定性函数。
 
-## Turning it off
+## 相关位置
 
-Disabling the bundle removes the injected text and both UI surfaces; the JSON
-file stays on disk, so re-enabling restores the library.
+- 设置 → **提示词模板**：维护模板库与所有规则。
+- 提示浮层出现在输入框卡片上方（`conversation.input.dock`）。
+- 配置文档位于 `$DSH_HOME/storages/prompt-hitchhiker/config.json`（设置页会显示该路径），原子写入。文件变化后会被重新读取，所以改完下一步就生效，不用重启。
+- 插件自身不发起任何模型请求；唯一的网络流量是页面访问它自己的 Host 路由。
+
+## 关闭插件
+
+停用 bundle 会移除注入正文和两个界面入口；JSON 文件保留在磁盘上，重新启用即可恢复模板库。
+
+## 安装
+
+```bash
+dsh plugin install @ipfans/dsh-prompt-hitchhiker
+```
+
+或在 Plugin Manager 里搜索 `dsh-prompt-hitchhiker`。
+
+## 许可证
+
+MIT。内置的 Ponytail 提示词与 skill 版权归 DietrichGebert，同样以 MIT 分发，完整文本见 [LICENSE](LICENSE)。
