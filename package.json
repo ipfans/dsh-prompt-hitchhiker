@@ -1,6 +1,6 @@
 {
   "name": "@ipfans/dsh-prompt-hitchhiker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inject named prompt templates into the DeepSeek Harness system prompt, resolved by workspace and by model. Ships with Ponytail and its five companion skills.",
   "author": "ipfans",
   "license": "MIT",
