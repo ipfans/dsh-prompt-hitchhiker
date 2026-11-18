@@ -1,0 +1,46 @@
+<svg width="640" height="300" viewBox="0 0 640 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Library column: named template cards -->
+  <rect x="32" y="56" width="150" height="52" rx="8" fill="#EEF3FF" stroke="#C7D6F6" />
+  <rect x="46" y="70" width="66" height="6" rx="3" fill="#3C63D6" />
+  <rect x="46" y="84" width="106" height="5" rx="2.5" fill="#9DB1DD" />
+  <rect x="46" y="94" width="84" height="5" rx="2.5" fill="#9DB1DD" />
+
+  <rect x="32" y="120" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#D9DEEA" />
+  <rect x="46" y="134" width="52" height="6" rx="3" fill="#8A93A8" />
+  <rect x="46" y="148" width="106" height="5" rx="2.5" fill="#C9CFDD" />
+  <rect x="46" y="158" width="70" height="5" rx="2.5" fill="#C9CFDD" />
+
+  <rect x="32" y="184" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#D9DEEA" />
+  <rect x="46" y="198" width="74" height="6" rx="3" fill="#8A93A8" />
+  <rect x="46" y="212" width="106" height="5" rx="2.5" fill="#C9CFDD" />
+  <rect x="46" y="222" width="58" height="5" rx="2.5" fill="#C9CFDD" />
+
+  <!-- Selection rules: workspace + model matching (no lettering) -->
+  <rect x="212" y="96" width="104" height="30" rx="15" fill="#E8F8F1" stroke="#A7E3C6" />
+  <circle cx="232" cy="111" r="5" fill="#1FA97A" />
+  <rect x="244" y="107" width="52" height="8" rx="4" fill="#7FCBAA" />
+
+  <rect x="212" y="140" width="104" height="30" rx="15" fill="#FFF3E2" stroke="#F5D5A6" />
+  <circle cx="232" cy="155" r="5" fill="#E09030" />
+  <rect x="244" y="151" width="44" height="8" rx="4" fill="#EFC08B" />
+
+  <!-- Flow arrows -->
+  <path d="M186 110 C 200 110, 202 134, 210 148" stroke="#C0C8D8" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+  <path d="M186 206 C 200 206, 202 172, 210 158" stroke="#C0C8D8" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+  <path d="M318 146 L 360 146" stroke="#3C63D6" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M352 140 L 360 146 L 352 152" stroke="#3C63D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+  <!-- Assembled system prompt stack: injected body highlighted between persona and tools -->
+  <rect x="366" y="34" width="242" height="232" rx="12" fill="#FFFFFF" stroke="#D9DEEA" />
+  <rect x="384" y="50" width="128" height="18" rx="5" fill="#F1F3F8" />
+  <rect x="384" y="78" width="206" height="34" rx="6" fill="#EEF3FF" stroke="#3C63D6" />
+  <rect x="394" y="88" width="150" height="5" rx="2.5" fill="#5B7FE0" />
+  <rect x="394" y="99" width="112" height="5" rx="2.5" fill="#9DB1DD" />
+  <rect x="384" y="124" width="206" height="16" rx="5" fill="#F1F3F8" />
+  <rect x="384" y="148" width="176" height="16" rx="5" fill="#F1F3F8" />
+  <rect x="384" y="172" width="196" height="16" rx="5" fill="#F1F3F8" />
+  <rect x="384" y="196" width="140" height="16" rx="5" fill="#F1F3F8" />
+  <rect x="384" y="228" width="96" height="20" rx="10" fill="#E8F8F1" />
+  <circle cx="398" cy="238" r="5" fill="#1FA97A" />
+  <rect x="408" y="234" width="58" height="8" rx="4" fill="#7FCBAA" />
+</svg>

@@ -1,0 +1,66 @@
+{
+  "name": "@ipfans/dsh-prompt-hitchhiker",
+  "version": "0.1.0",
+  "description": "Inject named prompt templates into the DeepSeek Harness system prompt, resolved by workspace and by model. Ships with Ponytail and its five companion skills.",
+  "author": "ipfans",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "type": "module",
+  "engines": {
+    "dsh": ">=0.2.1"
+  },
+  "main": "index.js",
+  "icon": "./icon.svg",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "prompt",
+    "system-prompt",
+    "templates",
+    "ponytail"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./ponytail": "./ponytail.js"
+  },
+  "files": [
+    "index.js",
+    "ponytail.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipfans/dsh-prompt-hitchhiker.git"
+  },
+  "homepage": "https://github.com/ipfans/dsh-prompt-hitchhiker#readme",
+  "bugs": "https://github.com/ipfans/dsh-prompt-hitchhiker/issues",
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

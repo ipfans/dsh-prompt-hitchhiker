@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Prompt hitchhiker",
+    "description": "Inject a named prompt template into the system prompt of every new session and subagent. Ships with Ponytail: the prompt is in the library ready to select, and its five companion skills (review, audit, debt, gain, help) load on demand. Templates resolve by workspace and by model (name starts with, ends with, or contains). The injected text sits between the deployment persona and the tool guidance. Find it in Settings > Prompt templates to keep the library, the global default, each workspace choice (follow global / do not inject / a named template) and the model rules; a hint above the composer offers to insert a body into a session that started before its template applied. The plugin only reads and writes its own JSON document under the DSH home (storages/prompt-hitchhiker/config.json) and makes no extra model requests; disabling it removes the injected text and both UI surfaces and leaves that file in place.",
+    "detail": "docs/DETAIL.md"
+  }
+}

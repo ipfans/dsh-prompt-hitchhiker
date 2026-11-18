@@ -1,0 +1,7 @@
+# Bundle patch layer: one Host row loads this package's main entry (the Cordis
+# plugin that owns prompt resolution, persistence, and the settings API). The
+# `dsh.client` declaration makes the Web app load `./client` as the browser
+# half that renders the settings page and the composer hint.
+- insert:
+    - id: prompt-hitchhiker
+      name: '@ipfans/dsh-prompt-hitchhiker'
